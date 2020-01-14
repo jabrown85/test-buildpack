@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -eo pipefail
+echo "-----> Test buildpack compile start"
+
+echo "Connecting to redis"
+echo "ps $(ps)"
+echo "env $(env)"
+/app/.indyno/vendor/redis/bin/redis-cli -u $REDIS_URL set test "myvalue"
+/app/.indyno/vendor/redis/bin/redis-cli -u $REDIS_URL get test
+
+echo "-----> Test buildpack done"
+exit 0
